@@ -1,32 +1,50 @@
-var clearTrack = function(track) {
-  for (i = 0; i < track.length; i++){
+
+
+
+var clearTrack = function(track)
+{
+  for (i = 0; i < track.length; i++)
+  {
     track[i].classList.remove('active');
   }
 };
 
-var update_player_position = function(trackName, position)
+var update_player_position = function(trackName, playerPosition)
 {
   var entireTrack = document.querySelectorAll(trackName);
   clearTrack(entireTrack);
-  if (position < entireTrack.length)
+  if (playerPosition < entireTrack.length)
   {
-    entireTrack[position].classList.add('active');
-  } else {
-    alert(trackName + " " + 'won!');
+    entireTrack[playerPosition].classList.add('active');
+  }
+  else
+  {
+    winner = true;
+    alert(trackName + ' wins!');
   }
 }
 
-
-pPressed = 0;
-qPressed = 0;
-
-document.addEventListener('keyup', function(event){
-  console.log("something");
-  if (event.keyCode == 80){
+var interaction = function(event)
+{
+  if (winner === true)
+  {
+    winner = false;
+    pPressed = 0;
+    qPressed = 0;
+  }
+  else if (event.keyCode == 80)
+  {
     pPressed++;
-  } else if (event.keyCode == 81) {
+  }
+  else if (event.keyCode == 81)
+  {
     qPressed++;
   }
-  update_player_position('div.blue', pPressed);
-  update_player_position('div.green', qPressed);
-}, false)
+  update_player_position('.player1', pPressed);
+  update_player_position('.player2', qPressed);
+};
+
+winner = false;
+pPressed = 0;
+qPressed = 0;
+document.addEventListener('keyup', interaction, false);
