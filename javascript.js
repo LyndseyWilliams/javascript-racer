@@ -5,57 +5,55 @@ var update_player_position = function(player,position) {
 //Set up player class using input player variable
   var player_class = "#" + player + "_strip"
 
-//STEP 1 Select Play Row
-var player_row = document.querySelector(player_class);
+  //STEP 1 Select Play Row
+  var player_row = document.querySelector(player_class);
 
-//Select player by Active TD class
-var player = player_row.querySelector(".active");
+  //Select player by Active TD class
+  var player = player_row.querySelector(".active");
 
-// Remove Active Class for active player turns blank
-player.removeAttribute('class');
+  // Remove Active Class for active player turns blank
+  player.removeAttribute('class');
 
-//Activate player that is received as input
-var new_position = player_row.querySelectorAll("td")[position];
+  //Activate player that is received as input
+  var new_position = player_row.querySelectorAll("td")[position];
 
-//Set Active class for selected position
-new_position.setAttribute('class','active');
+  //Set Active class for selected position
+  new_position.setAttribute('class','active');
 
 };
 
-// window.onload = function(){
+//Create function that gets current position of player
 
-// document.querySelector(".active").style.backgroundColor = "red";
+var get_index_of_player = function(player_strip) {
 
-// };
+  var active_cell = document.querySelector('.active')
+
+  node_list_of_td = player_strip.querySelectorAll("td");
+
+  array_of_td = Array.prototype.slice.call(node_list_of_td);
+
+  return array_of_td.indexOf(active_cell)
+}
+
+// Moves selected player incrementally one player up
+
+var move_player = function (player) {
+
+  var player_class = "#" + player + "_strip"
+
+  var player_row = document.querySelector(player_class);
+
+  var current_index = get_index_of_player(player_row);
+
+  update_player_position(player,current_index + 1 )
+
+}
+
+
+document.onreadystatechange = function() {
+
+document.addEventListener('keyup', move_player('player1'))
 
 
 
-// // Function to change the content of t2
-// function modifyText(new_text) {
-//   var t2 = document.getElementById("t2");
-//   t2.firstChild.nodeValue = new_text;
-// }
-
-// // Function to add event listener to table
-// var el = document.getElementById("outside");
-// el.addEventListener("click", function(){modifyText("four")}, false);
-
-// // Function to change the content of t2
-// function modifyText() {
-//   var t2 = document.querySelectorAll(".t2");
-//   if (t2 == ".t3") {
-//     t2 = "two";
-//   } else {
-//     t2.firstChild.nodeValue = "four";
-//   }
-// }
-
-// // add event listener to t
-// var el = document.getElementById("outside");
-// el.addEventListener("click", modifyText, false);
-
-//   // if (t2.firstChild.nodeValue == "four") {
-//   //   t2.firstChild.nodeValue = "two";
-//   // } else {
-//   //   t2.firstChild.nodeValue = "four";
-//   // }
+}
