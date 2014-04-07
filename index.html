@@ -1,0 +1,23 @@
+<htmL>
+<head>
+<link href="style.css" media="all" rel="stylesheet" type="text/css" />
+
+</head>
+<form class = "board_length">
+  <input type="text" name='number' placeholder="Enter Board Length">
+  <input type='submit' value='submit'>
+</form>
+<table class="racer_table">
+  <tr id="player1_strip" >
+    <td class="active"></td>
+    <td class="end"></td>
+  </tr>
+  <tr id="player2_strip">
+    <td class="active1"></td>
+    <td class="end"></td>
+  </tr>
+</table>
+<script src="racer.js"></script>
+<input type="text" onkeypress="movePosition1()">Player 1
+<input type="text" onkeypress="movePosition2()">Player 2
+<html>
