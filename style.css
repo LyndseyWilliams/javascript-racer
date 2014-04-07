@@ -1,0 +1,18 @@
+.racer_table td {
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  border: 2px solid purple;
+}
+
+.racer_table td.active {
+  background-color: black;
+}
+
+.racer_table td.inactive {
+  background-color: white;
+}
+
+.racer_table td.crossed {
+  background-color: #333;
+}
