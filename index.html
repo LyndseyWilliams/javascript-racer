@@ -5,16 +5,20 @@
         <title>Java Racer</title>
 
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script type="text/javascript" src="application.js"></script>
+
 
 
       </head>
       <body>
 
+        <input type="number" id="length" name="length" min='1' max='50'>
+        <button onclick="setLength()">Set Game Board Length</button>
+
+
 
       <table class="racer_table">
         <tr id="player1">
-          <td id="1_1"></td>
+  <!--         <td id="1_1"></td>
           <td id="1_2"></td>
           <td id="1_3"></td>
           <td id="1_4"></td>
@@ -43,11 +47,11 @@
           <td id="1_27"></td>
           <td id="1_28"></td>
           <td id="1_29"></td>
-          <td id="1_30"></td>
+          <td id="1_30"></td> -->
 
         </tr>
         <tr id="player2">
-          <td id="2_1"></td>
+<!--           <td id="2_1"></td>
           <td id="2_2"></td>
           <td id="2_3"></td>
           <td id="2_4"></td>
@@ -76,7 +80,7 @@
           <td id="2_27"></td>
           <td id="2_28"></td>
           <td id="2_29"></td>
-          <td id="2_30"></td>
+          <td id="2_30"></td> -->
         </tr>
       </table>
 
@@ -88,6 +92,6 @@
 
       <input id="play-again" class="hidden" type="button" value="Play Again" onClick="window.location.reload()">
 
-
+       <script type="text/javascript" src="application.js"></script>
       </body>
     </html>
