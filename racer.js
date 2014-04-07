@@ -15,6 +15,13 @@ var movePlayerOneSpace = function(player) {
   player.nextElementSibling.className = "active"
 };
 
+var gameEnd = function(strip, player_name){
+  if (strip.lastElementChild.className === "active")
+  {
+    alert( "winner: "+ player_name);
+  }
+}
+
 var oneKeyTap = function(strip) {
   var player = findPlayer(strip);
   movePlayerOneSpace(player)
@@ -25,10 +32,12 @@ document.onkeyup = function(e) {
   if (e.keyCode == 65)
   {
     oneKeyTap(strip1)
+    gameEnd(strip1, "left player")
   }
   else if (e.keyCode == 76)
   {
     oneKeyTap(strip2)
+    gameEnd(strip2, "right player")
   }
 };
 
