@@ -4,12 +4,24 @@
   width: 20px;
 }
 
-.racer_table td.active {
-  background-color: black;
+.racer_table td.active_blue {
+  background-color: blue;
+}
+
+.racer_table td.active_pink {
+  background-color: pink;
 }
 
 td {
         border-style: solid;
         border-width: 1px;
         border-color: black;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.pink {
+  background-color: pink;
 }
