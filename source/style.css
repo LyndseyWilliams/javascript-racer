@@ -1,0 +1,18 @@
+body {background-image:url("speedracer.jpeg")}
+
+.racer_table{
+ border-collapse: collapse;
+}
+.racer_table td {
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  border-style:solid;
+  /*border-bottom-style:solid;*/
+  border-width:5px;
+  border-color: blue;
+}
+
+.racer_table td.active {
+  background-color: green;
+}
