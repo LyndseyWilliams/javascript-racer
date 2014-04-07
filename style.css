@@ -15,3 +15,15 @@
 .racer_table td.activeAtouched {
   background-color: black;
 }
+
+.racer_table td.activeM {
+  background-color: green;
+}
+
+.racer_table td.activeMgo {
+  background-color: red;
+}
+
+.racer_table td.activeMtouched {
+  background-color: green;
+}
