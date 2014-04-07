@@ -8,12 +8,18 @@ var update_player_position = function(trackName, position)
 {
   var entireTrack = document.querySelectorAll(trackName);
   clearTrack(entireTrack);
-  entireTrack[position].classList.add('active')
+  if (position < entireTrack.length)
+  {
+    entireTrack[position].classList.add('active');
+  } else {
+    alert(trackName + " " + 'won!');
+  }
 }
 
 
 pPressed = 0;
 qPressed = 0;
+
 document.addEventListener('keyup', function(event){
   console.log("something");
   if (event.keyCode == 80){
