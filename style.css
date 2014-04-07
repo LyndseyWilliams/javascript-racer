@@ -1,0 +1,17 @@
+.racer_table td {
+  background-color: green;
+  height: 20px;
+  width: 20px;
+}
+
+.racer_table td.activeA {
+  background-color: black;
+}
+
+.racer_table td.activeAgo {
+  background-color: blue;
+}
+
+.racer_table td.activeAtouched {
+  background-color: black;
+}
