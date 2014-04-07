@@ -23,22 +23,22 @@ var findPlayer = function(strip){
 // }
 
 
-var checkWinner = function(strip) {
+var checkWinner = function(strip, playerName) {
   var currentActiveSpot = findPlayer(strip)
   var lastBox = strip.lastElementChild
   if (currentActiveSpot.className === lastBox.className){
-     alert( "!!!")
+     alert( playerName + " wins!!!")
   }
 }
 
 document.onkeyup = function(e) {
   if (e.keyCode == 80){
     movePlayer(strip1)
-    checkWinner(strip1)
+    checkWinner(strip1, "Player 1")
   }
   else if (e.keyCode == 81) {
     movePlayer(strip2)
-    checkWinner(strip2)
+    checkWinner(strip2, "Player 2")
   };
 };
 
