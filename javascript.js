@@ -24,13 +24,13 @@ var update_player_position = function(player,position) {
 
 //Create function that gets current position of player
 
-var get_index_of_player = function(player_strip) {
+var get_index_of_player = function(player_row) {
 
-  var active_cell = document.querySelector('.active')
-
-  node_list_of_td = player_strip.querySelectorAll("td");
+  node_list_of_td = player_row.querySelectorAll("td");
 
   array_of_td = Array.prototype.slice.call(node_list_of_td);
+
+  var active_cell = player_row.querySelector('.active')
 
   return array_of_td.indexOf(active_cell)
 }
@@ -49,11 +49,8 @@ var move_player = function (player) {
 
 }
 
-
 document.onreadystatechange = function() {
 
-document.addEventListener('keyup', move_player('player1'))
-
-
+document.addEventListener('keyup', move_player())
 
 }
