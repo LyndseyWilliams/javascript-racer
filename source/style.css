@@ -1,0 +1,19 @@
+.blue {
+  width:20px;
+  height: 20px;
+  display: inline-block;
+  border-right: 1px solid #fff;
+  background-color: blue;
+}
+
+.green {
+  width:20px;
+  height: 20px;
+  display: inline-block;
+  border-right: 1px solid #fff;
+  background-color: green;
+}
+
+div.active {
+  background-color: #000;
+}
