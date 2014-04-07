@@ -15,9 +15,28 @@ var movePlayerOneSpace = function(player) {
   player.nextElementSibling.className = "active"
 };
 
-var oneRound = function(strip) {
+var oneKeyTap = function(strip) {
   var player = findPlayer(strip);
   movePlayerOneSpace(player)
 }
 
-// oneRound(strip1)
+document.onkeyup = function(e) {
+  console.log(e.keyCode)
+  if (e.keyCode == 65)
+  {
+    oneKeyTap(strip1)
+  }
+  else if (e.keyCode == 76)
+  {
+    oneKeyTap(strip2)
+  }
+};
+
+//method below finds key numbers
+// document.onkeyup = function(e) {
+//   console.log(e.keyCode)
+//   if (e.keyCode == 65){
+//     // console.log('yay')
+//     oneKeyTap(strip1)
+//   }
+// };
