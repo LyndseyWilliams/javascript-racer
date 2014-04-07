@@ -1,0 +1,24 @@
+.container{
+  height: 100%;
+  width: 100%;
+}
+
+.racer_table{
+  margin: auto;
+  margin-top: 30%;
+  vertical-align: middle;
+
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+
+.racer_table td {
+  background-color: white;
+  height: 32px;
+  width: 30px;
+  border: 1px solid black;
+}
+
+.racer_table td.active {
+  background-color: black;
+}
