@@ -19,7 +19,17 @@ var gameEnd = function(strip, player_name){
   if (strip.lastElementChild.className === "active")
   {
     alert( "winner: "+ player_name);
+    resetGame()
   }
+}
+
+var resetGame = function(){
+  var course1 = document.querySelectorAll('.active')[0]
+  var course2 = document.querySelectorAll('.active')[1]
+  course1.className = ""
+  course2.className = ""
+  document.querySelector("#player1_strip").querySelector('td').className = 'active'
+   document.querySelector("#player2_strip").querySelector('td').className = 'active'
 }
 
 var oneKeyTap = function(strip) {
