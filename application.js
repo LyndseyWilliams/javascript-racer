@@ -1,7 +1,8 @@
 var player1_position = [1,1];
 var player2_position = [1,1];
 
-
+var gameOver = false;
+console.log(gameOver);
 document.onreadystatechange = function() {
     document.addEventListener('keyup', playGame, false)
 
@@ -38,6 +39,9 @@ function declareWinner() {
     document.getElementById('winner').innerHTML="Player 2 Wins!";
   }
   document.removeEventListener('keyup', playGame, false);
+  gameOver = true;
+  console.log(gameOver);
+  playAgain();
 }
 
 function updatePlayerPosition(player, new_position, old_position){
@@ -79,8 +83,10 @@ function roll() {
   return num;
 }
 
-
-
-
+function playAgain(){
+  if (gameOver === true) {
+    document.getElementById('play-again').className = "display";
+  }
+}
 
 

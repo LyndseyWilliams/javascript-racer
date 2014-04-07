@@ -8,3 +8,11 @@
 .racer_table td.active {
   background-color: black;
 }
+
+.hidden {
+  display: none;
+}
+
+.display {
+  display: block;
+}
