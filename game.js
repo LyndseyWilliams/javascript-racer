@@ -43,8 +43,9 @@ document.getElementById('click').onclick = function(event)
 
 // document.getElementById('player_click').onclick = function(event)
 // {
-//   var table1 = document.getElementsByClassName("racer_table");
-
+//   var table = document.getElementsByClassName("racer_table");
+//   row3= player2_strip
+//   var row3 = table.insertRow(2);
 // }
 
 }
