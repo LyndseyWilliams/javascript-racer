@@ -27,15 +27,16 @@ var game = {
 for (var i= 1; i < lengthOfTrack; i++) {
   row = document.querySelector("#player1_strip");
   var newSpace = document.createElement("td")
+  console.log(newSpace)
+  newSpace = row.insertCell(i); // note insert cell will not carry class
   newSpace.className = "inactive";
-  newSpace = row.insertCell(i);
 };
 
 for (var i= 1; i < lengthOfTrack; i++) {
   row = document.querySelector("#player2_strip");
   var newSpace = document.createElement("td")
-  newSpace.className = "inactive";
-  newSpace = row.insertCell(i);
+  newSpace = row.insertCell(i); // note insert cell will not carry class
+   newSpace.className = "inactive";
 };
 
 //Move player 1 /corresponds to p key (code 80)
