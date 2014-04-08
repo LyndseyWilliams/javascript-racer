@@ -1,7 +1,3 @@
-// var racer1 = document.getElementById('player1_strip')
-
-// var racer1 = document.querySelectorAll('.active')[0].nextElementSibling;
-
 var strip1 = document.querySelector("#player1_strip");
 var strip2 = document.querySelector("#player2_strip");
 
@@ -55,32 +51,37 @@ var movePlayerToBeginning = function(){
   document.querySelector("#player2_strip").querySelector('td').className = 'active'
 }
 
-var oneKeyTap = function(strip)
-{
+var oneKeyTap = function(strip) {
   var player = findPlayer(strip);
   movePlayerOneSpace(player)
 }
 
+// var submitButton = document.querySelector('.button')
+var makeBoard = function()
+{
+  event.preventDefault()
+  createBoard(userLengthInput())
+}
 
+// \new awesome code yayayaya
+window.addEventListener('load', initialize, false)
 
-  // var submitButton = document.querySelector('.button')
-  var makeBoard = function()
-  {
-    event.preventDefault()
-    createBoard(userLengthInput())
-  }
-
-
-document.onreadystatechange = function() {
+function initialize(){
   var form = document.querySelector('.input-form')
   form.addEventListener('submit',makeBoard,false)
+  var player1 = new Player()
+  var player2 = new Player()
+  console.log("players: ", player1, player2)
 }
 
 document.onkeyup = function(e) {
   if (e.keyCode == 65)
   {
-    oneKeyTap(strip1)
-    gameEnd(strip1, "left player")
+    this.updatePlayerPosition()
+    this.checkWinnerWinnerChickenDinner()
+    this.drawPlayer()
+    // oneKeyTap(strip1)
+    // gameEnd(strip1, "left player")
   }
   else if (e.keyCode == 76)
   {
@@ -89,11 +90,29 @@ document.onkeyup = function(e) {
   }
 };
 
-//method below finds key numbers
-// document.onkeyup = function(e) {
-//   console.log(e.keyCode)
-//   if (e.keyCode == 65){
-//     // console.log('yay')
-//     oneKeyTap(strip1)
-//   }
-// };
+var possible_keys = [65,76]
+function Player(){
+  this.position = 0
+  this.victory = false
+  this.keyCode = possible_keys.pop()
+}
+
+
+Player.prototype = {
+  updatePlayerPosition: function() {
+    if (e.keyCode === Player.keycode){
+      this.position += 1
+    }
+  },
+
+  checkWinnerWinnerChickenDinner: function(){
+    console.log("salar sucks, also winner shit")
+  },
+
+  drawPlayer: function(){
+    console.log("drawPlayer")
+  }
+}
+
+
+
