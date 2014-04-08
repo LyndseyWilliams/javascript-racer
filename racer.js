@@ -67,50 +67,47 @@ var makeBoard = function()
 window.addEventListener('load', initialize, false)
 
 function initialize(){
-  var form = document.querySelector('.input-form')
-  form.addEventListener('submit',makeBoard,false)
   var player1 = new Player()
   var player2 = new Player()
-  console.log("players: ", player1, player2)
+  var form = document.querySelector('.input-form')
+  form.addEventListener('submit', makeBoard, false)
 }
 
-document.onkeyup = function(e) {
-  if (e.keyCode == 65)
-  {
-    this.updatePlayerPosition()
-    this.checkWinnerWinnerChickenDinner()
-    this.drawPlayer()
-    // oneKeyTap(strip1)
-    // gameEnd(strip1, "left player")
-  }
-  else if (e.keyCode == 76)
-  {
-    oneKeyTap(strip2)
-    gameEnd(strip2, "right player")
-  }
-};
+function updatePlayer(event, self){
+  self.updatePlayerPosition( event.keyCode )
+  self.checkWinnerWinnerChickenDinner()
+  self.drawPlayer()
+  // oneKeyTap(strip1)
+  // gameEnd(strip1, "left player")
+  // oneKeyTap(strip2)
+  // gameEnd(strip2, "right player")
+}
 
 var possible_keys = [65,76]
 function Player(){
+  var self = this
   this.position = 0
   this.victory = false
   this.keyCode = possible_keys.pop()
+  document.addEventListener('keyup', function(event){
+    updatePlayer(event, self)
+  } , false)
 }
 
-
 Player.prototype = {
-  updatePlayerPosition: function() {
-    if (e.keyCode === Player.keycode){
+  updatePlayerPosition: function(keycode) {
+    console.log('position', this.keyCode, this.position)
+    if (keycode === this.keyCode){
       this.position += 1
     }
   },
 
   checkWinnerWinnerChickenDinner: function(){
-    console.log("salar sucks, also winner shit")
+    // console.log("winner?")
   },
 
   drawPlayer: function(){
-    console.log("drawPlayer")
+    // console.log("drawPlayer")
   }
 }
 
