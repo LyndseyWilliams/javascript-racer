@@ -5,6 +5,11 @@
 var strip1 = document.querySelector("#player1_strip");
 var strip2 = document.querySelector("#player2_strip");
 
+
+var userLengthInput = function(){
+  return document.getElementById('boardLength').value
+}
+
 var createBoard = function(board_length){
   for (var i = 0; i < board_length; i++)
   {
@@ -50,9 +55,25 @@ var movePlayerToBeginning = function(){
   document.querySelector("#player2_strip").querySelector('td').className = 'active'
 }
 
-var oneKeyTap = function(strip) {
+var oneKeyTap = function(strip)
+{
   var player = findPlayer(strip);
   movePlayerOneSpace(player)
+}
+
+
+
+  // var submitButton = document.querySelector('.button')
+  var makeBoard = function()
+  {
+    event.preventDefault()
+    createBoard(userLengthInput())
+  }
+
+
+document.onreadystatechange = function() {
+  var form = document.querySelector('.input-form')
+  form.addEventListener('submit',makeBoard,false)
 }
 
 document.onkeyup = function(e) {
