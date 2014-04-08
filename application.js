@@ -1,38 +1,58 @@
 var lengthOfTrack = 0;
+var numPlayers = 2;
 
-function setLength(){
+function setBoard(){
 lengthOfTrack = document.getElementById("length").value;
-setGameBoard();
-}
-
-function setGameBoard(){
-
-var player1 = document.getElementById('player1');
-var player2 = document.getElementById('player2');
-
-
-console.log(player1);
-console.log(player2);
+lengthOfTrack = parseInt(lengthOfTrack);
+numPlayers = document.getElementById("players").value;
 console.log(lengthOfTrack);
 
+setGameBoard();
+
+}
 
 
-for (var i = 1; i <= lengthOfTrack; i++) {
-  var td = document.createElement('td');
-  var p1td = player1.appendChild(td);
-  p1td.id = '1_' + i;
+function setGameBoard(){
+  // console.log(numPlayers);
+  // console.log(lengthOfTrack);
 
-  var td2 = document.createElement('td');
-  var p2td = player2.appendChild(td2);
-  p2td.id = '2_' + i;
+  var table = document.getElementById('racer_table');
+    for (var i = 1; i <= numPlayers; i++) {
+      var tr = document.createElement('tr');
+      var row = table.appendChild(tr);
+      row.id = 'player' + i;
+
+        for (var j = 1; j <= lengthOfTrack; j++) {
+          var td = document.createElement('td');
+          var column = row.appendChild(td);
+          column.id = i +'_' + j;
+        };
+    };
+
+    setPositionArrays();
 };
+
+var Positions = {};
+
+function setPositionArrays(){
+  console.log(numPlayers);
+  for (var i = 1; i <= numPlayers; i++) {
+    Positions['player' + i] = [1,1]
+  };
+
+console.log(Positions);
+
 };
+// var player1 = document.getElementById('player1');
+// var player2 = document.getElementById('player2');
 
-var player1_position = [1,1];
-var player2_position = [1,1];
+// console.log(player1);
+// console.log(player2);
+// console.log(lengthOfTrack);
 
 
-
+// };
+// };
 
 
 
@@ -40,78 +60,75 @@ var gameOver = false;
 
 document.onreadystatechange = function() {
     document.addEventListener('keyup', playGame, false)
-
-
   }
 
 function playGame(event) {
-
   if (event.keyCode == 65) {
       getNewPosition(1);
-
    }
-   else if (event.keyCode == 76) {
+   else if (event.keyCode == 69) {
       getNewPosition(2);
+   }
+   else if (event.keyCode == 73) {
+    getNewPosition(3)
+   }
+   else if (event.keyCode == 79) {
+    getNewPosition(4)
+   }
+   else if (event.keyCode == 85) {
+    getNewPosition(5)
    }
    else {
     return '';
    }
-  if (player1_position[player1_position.length - 1] == lengthOfTrack || player2_position[player2_position.length - 1] == lengthOfTrack) {
+  if (Positions['player1'][Positions['player1'].length - 1] == lengthOfTrack ||
+    Positions['player2'][Positions['player2'].length - 1] == lengthOfTrack ||
+    Positions['player3'][Positions['player3'].length - 1] == lengthOfTrack ||
+    Positions['player4'][Positions['player4'].length - 1] == lengthOfTrack ||
+    Positions['player5'][Positions['player5'].length - 1] == lengthOfTrack) {
     declareWinner();
   }
 }
 
-
 function declareWinner() {
-  if (player1_position[player1_position.length - 1] == lengthOfTrack && player2_position[player2_position.length - 1] == lengthOfTrack) {
-    document.getElementById('winner').innerHTML="It's a Tie!";
+  winners = [];
+  for (var i = 1; i <= numPlayers; i++) {
+    if (Positions['player'+i][Positions['player'+i].length - 1 ] == lengthOfTrack) {
+      winners.push('player' + i);
+    };
+  };
 
+  if (winners.length > 1) {
+    document.getElementById('winner').innerHTML = "It's a Tie!";
   }
-  else if (player1_position[player1_position.length - 1] == lengthOfTrack) {
-    document.getElementById('winner').innerHTML="Player 1 Wins!";
-  }
-  else if (player2_position[player2_position.length - 1] == lengthOfTrack) {
-    document.getElementById('winner').innerHTML="Player 2 Wins!";
+  else {
+    document.getElementById('winner').innerHTML = winners[0] + " Wins!";
   }
   document.removeEventListener('keyup', playGame, false);
   gameOver = true;
-  console.log(gameOver);
   playAgain();
+
 }
+
 
 function updatePlayerPosition(player, new_position, old_position){
   var old = player + "_" + old_position;
   var updated = player + "_" + new_position;
-  // var old_position = document.getElementById(old).className = '';
   var new_position = document.getElementById(updated).className = "active";
   var old_position = document.getElementById(old).className = '';
-
 }
 
 function getNewPosition(player) {
-  if (player === 1) {
-    player1_position.push(roll() + player1_position[player1_position.length - 1]);
-    console.log('player 1');
-    console.log(player1_position);
-    // debugger
-    if (player1_position[player1_position.length - 1] > lengthOfTrack) {
-      player1_position[player1_position.length - 1] = lengthOfTrack;
+
+    Positions['player' + player].push(roll() + Positions['player' + player][Positions['player' + player].length - 1]);
+    console.log('player' + player);
+    console.log(Positions['player' + player]);
+    if (Positions['player' + player][Positions['player' + player].length - 1] > lengthOfTrack) {
+      Positions['player' + player][Positions['player' + player].length - 1] = lengthOfTrack;
     }
-    updatePlayerPosition(player, player1_position[player1_position.length - 1], player1_position[player1_position.length - 2]);
-  }
-  else if (player === 2) {
-    player2_position.push(roll() + player2_position[player2_position.length - 1]);
-    console.log('player 2');
-    console.log(player2_position);
-    if (player2_position[player2_position.length - 1] > lengthOfTrack) {
-      player2_position[player2_position.length - 1] = lengthOfTrack;
-    }
-    updatePlayerPosition(player, player2_position[player2_position.length - 1], player2_position[player2_position.length - 2]);
-  }
-  else {
-    return '';
-  }
+    updatePlayerPosition(player, Positions['player' + player][Positions['player' + player].length - 1], Positions['player' + player][Positions['player' + player].length - 2]);
 }
+
 
 function roll() {
   var num = Math.floor(Math.random() * 6 + 1);

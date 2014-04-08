@@ -11,13 +11,15 @@
       </head>
       <body>
 
-        <input type="number" id="length" name="length" min='1' max='50'>
-        <button onclick="setLength()">Set Game Board Length</button>
+        Board Length: <input type="number" id="length" name="length" min='1' max='50'>
+
+        Num Players: <input type="number" id="players" name="players" min='2' max='5'>
+        <button onclick="setBoard()">Set Game Board</button>
 
 
 
-      <table class="racer_table">
-        <tr id="player1">
+      <table id="racer_table">
+        <!-- <tr id="player1"> -->
   <!--         <td id="1_1"></td>
           <td id="1_2"></td>
           <td id="1_3"></td>
@@ -49,8 +51,8 @@
           <td id="1_29"></td>
           <td id="1_30"></td> -->
 
-        </tr>
-        <tr id="player2">
+  <!--       </tr> -->
+        <!-- <tr id="player2"> -->
 <!--           <td id="2_1"></td>
           <td id="2_2"></td>
           <td id="2_3"></td>
@@ -81,7 +83,7 @@
           <td id="2_28"></td>
           <td id="2_29"></td>
           <td id="2_30"></td> -->
-        </tr>
+        <!-- </tr> -->
       </table>
 
       <div id="winner">
