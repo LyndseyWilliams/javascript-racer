@@ -71,16 +71,19 @@ function initialize(){
   var player2 = new Player()
   var form = document.querySelector('.input-form')
   form.addEventListener('submit', makeBoard, false)
+  document.addEventListener('keyup', function(event){
+    updatePlayer(event, [player1, player2])
+  } , false)
 }
 
-function updatePlayer(event, self){
-  self.updatePlayerPosition( event.keyCode )
-  self.checkWinnerWinnerChickenDinner()
-  self.drawPlayer()
-  // oneKeyTap(strip1)
-  // gameEnd(strip1, "left player")
-  // oneKeyTap(strip2)
-  // gameEnd(strip2, "right player")
+function updatePlayer(event, players){
+  for (var i = 0, len = players.length; i < len; i++ ){
+    if (event.keyCode === players[i].keyCode) {
+      players[i].updatePlayerPosition( event.keyCode )
+      players[i].checkWinnerWinnerChickenDinner()
+      players[i].drawPlayer()
+    }
+  }
 }
 
 var possible_keys = [65,76]
@@ -89,9 +92,6 @@ function Player(){
   this.position = 0
   this.victory = false
   this.keyCode = possible_keys.pop()
-  document.addEventListener('keyup', function(event){
-    updatePlayer(event, self)
-  } , false)
 }
 
 Player.prototype = {
