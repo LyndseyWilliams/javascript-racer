@@ -30,11 +30,26 @@ function move2() {
 }
 
 
+//if there are no spaces with the class 'inactive'
+//the game is over and that player has won.
+var checkWinner = function(player_strip){
+  if (document.querySelector(player_strip).querySelector(".inactive") == null){console.log("Winner" + player_strip)}
+}
+
+
 document.onkeyup = function(e){
-  console.log(e.keyCode);
-if (e.keyCode==80){move1()};
-if (e.keyCode==81){move2()}
+if (e.keyCode==80){
+  move1()
+  checkWinner("#player1_strip")
+  };
+if (e.keyCode==81){
+  move2()
+  checkWinner("#player2_strip")
+  }
 };
+
+
+
 
 // //This works, too
 //  document.onkeyup = function(e) {
