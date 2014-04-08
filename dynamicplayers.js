@@ -35,9 +35,10 @@ var handleKeyup = function(keyUpEvent){
 }
 
 var updatePlayerPosition = function(player){
-  newPosition = currentPosition(player) + 1
-  allTdsForGivenPlayer(player)[currentPosition(player)].className = '';
-  allTdsForGivenPlayer(player)[newPosition].className = 'active';
+  playerPosition = currentPosition(player)
+  playerRow = allTdsForGivenPlayer(player)
+  playerRow[playerPosition].className = '';
+  playerRow[playerPosition + 1].className = 'active';
 }
 
 //---------------SETUP HELPER---------------
