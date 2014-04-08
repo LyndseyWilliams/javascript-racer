@@ -17,17 +17,43 @@ var get_index_of_player = function(player_row) {
   return index_of_active_and_length
 }
 
+//Create function that gets current position of player
+var convert_node_to_array = function(player_row) {
+  node_list_of_td = player_row.querySelectorAll("td");
+  array_of_td = Array.prototype.slice.call(node_list_of_td);
+  return array_of_td
+}
+
+var get_index_of_active_cell = function(player_row) {
+  var array_of_tds = convert_node_to_array(player_row)
+  var active_cell = player_row.querySelector('.active')
+  return array_of_td.indexOf(active_cell)
+  }
+
+var get_length_of_row = function(player_row) {
+  var array_of_tds = convert_node_to_array(player_row)
+  return array_of_td.length - 2
+  }
+
+
 // Moves selected player incrementally one player up
 var move_player = function (player) {
   var player_class = "#" + player + "_strip"
   var player_row = document.querySelector(player_class);
-  var index_of_active_and_length = get_index_of_player(player_row);
-  update_player_position(player,index_of_active_and_length[0] + 1 )
-  if ((index_of_active_and_length[0]+2) >= index_of_active_and_length[1])
-   {alert(player + " WINS!");
+  var index_of_active_cell = get_index_of_active_cell(player_row)
+  var finishline = get_length_of_row(player_row)
+  update_player_position(player, index_of_active_cell + 1)
+  check_if_game_over(index_of_active_cell, finishline)
+}
+
+var check_if_game_over = function (index_of_active_cell, finishline) {
+ if ((index_of_active_cell) >= finishline)
+   {alert(" WINS!");  //PASS PLAYER INTO HERE
   location.reload();
   }
 }
+
+// player +
 
 var select_player = function(event) {
   if (event.keyCode == 80) // P
@@ -63,7 +89,6 @@ var generate_strip = function() {
     p++;
   }
 }
-
 
 document.onreadystatechange = function() {
   document.addEventListener('keyup', select_player, false);
