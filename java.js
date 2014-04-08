@@ -6,8 +6,37 @@ document.onreadystatechange = function() {
   var resetButton = document.getElementById('reset');
   resetButton.addEventListener('click', reloadPage)
 
+  var form = document.querySelector('.form')
+
+  form.addEventListener('submit',length,false)
 
 }
+
+
+
+function newRow (times) {
+  for (i=0;i<times;i++) {
+    console.log('hi')
+  var parentQ= document.querySelector("#player1_strip")
+  var player= document.createElement('td')
+  player.className = 'activeA'
+  parentQ.appendChild(player)
+
+
+  var parentM= document.querySelector("#player2_strip")
+  var player2= document.createElement('td')
+  player2.className = 'activeM'
+  parentM.appendChild(player2)
+  }
+}
+
+var length = function(event){
+  event.preventDefault();
+  var number = this.number.value
+  newRow(number);
+}
+
+
 //functions for playerA to turn off current
   function turnCurrentOff(){
   if (document.querySelector('#player1_strip .activeAgo')) {
@@ -90,6 +119,7 @@ function reloadPage() {
 }
 
 
-
+var test = document.createElement('td')
+test.className = "activeA"
 
 
