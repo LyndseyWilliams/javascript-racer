@@ -1,5 +1,3 @@
-
-
 window.onload = function() {
   var form = document.querySelector(".board_length");
   form.addEventListener('submit', startround)
@@ -34,6 +32,7 @@ start_again();
 
 function start_again() {
   document.addEventListener('keyup', press, false);
+
   function press(callback) {
     if(callback.keyCode == 65 || callback.keyCode ==  83 || callback.keyCode ==  68){
       movePosition(0);
@@ -44,39 +43,32 @@ function start_again() {
     if(callback.keyCode == 32 || callback.keyCode == 33 || callback.keyCode == 34){
       movePosition(2);
     }
-      if(callback.keyCode == 32 || callback.keyCode == 33 || callback.keyCode == 34){
-      movePosition(2);
+    if(callback.keyCode == 32 || callback.keyCode == 33 || callback.keyCode == 34){
+      movePosition(3);
     }
   }
+
   function movePosition(player_num) {
     var players = document.querySelector(".racer_table").querySelectorAll('tr');
     cell = players[player_num].querySelector(".woo");
-    cell = cell.nextSibling;
-    console.log(cell);
-    console.log(players[0]);
-    if(cell.nextSibling == null){
-      // var n = player_num.toString()
-
-      alert("player " + player_num + " wins");
-      location.reload();
+    if(cell.nextSibling === null){
+      cell.className = "";
+      alert("player " +player_num+ " wins");
+      clearCells(players.length);
+      start_again();
     }
+    cell = cell.nextSibling;
     cell.className = "woo";
     cell.previousSibling.className = "";
   }
 }
 
-function do_over(){
-  var allKids = document.querySelector("#player1_strip").childNodes;
-  for(var i=0; i<allKids.length; i++) {
-    allKids[i].className = "";
-     }
-
-  var allKids = document.querySelector("#player2_strip").childNodes;
-  for(var i=0; i<allKids.length; i++) {
-    allKids[i].className = "";
-     }
-  document.querySelector("#player1_strip").querySelector('td').className = "active";
-  document.querySelector("#player2_strip").querySelector('td').className = "active1";
-  start_again();
+function clearCells(rows) {
+  var players = document.querySelector(".racer_table").querySelectorAll('tr');
+  for (x = 0; x<players.length; x++){
+    players[x].cells[0].className = "woo"
+    for (i = 1; i<rows; i++) {
+      players[x].cells[i].className = "";
+    }
+  }
 }
-
