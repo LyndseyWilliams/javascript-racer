@@ -22,7 +22,6 @@ var setupLanes = function(numberOfCellsInLane, numberOfPlayers){
 //---------------EVENT HANDLING CODE---------------
 var handleKeyup = function(keyUpEvent){
   var keyPressed = String.fromCharCode(keyUpEvent.keyCode)
-  console.log(keyPressed)
   if (keyPressed == "Q"){
     updatePlayerPosition('player1')
   }else if(keyPressed == "P"){
@@ -34,6 +33,9 @@ var updatePlayerPosition = function(player){
   playerPosition = currentPosition(player)
   playerRow = allTdsForGivenPlayer(player)
   playerRow[playerPosition].className = '';
+  if (playerPosition == playerRow.length){
+    
+  }
   playerRow[playerPosition + 1].className = 'active';
 }
 
@@ -49,16 +51,16 @@ var makeNewTD = function(index){
 
 //---------------UPDATE HELPER---------------
 
-var lane_of = function(player){
+var laneOf = function(player){
   return document.querySelector("#" + player)
 }
 
 var allTdsForGivenPlayer = function(player){
-  return lane_of(player).querySelectorAll("td");
+  return laneOf(player).querySelectorAll("td");
 }
 
 var activeSquare = function(player){
-  return lane_of(player).querySelector("td.active");
+  return laneOf(player).querySelector("td.active");
 }
 
 var currentPosition = function(player){
