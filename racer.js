@@ -5,6 +5,23 @@
 var strip1 = document.querySelector("#player1_strip");
 var strip2 = document.querySelector("#player2_strip");
 
+var createBoard = function(board_length){
+  for (var i = 0; i < board_length; i++)
+  {
+    strip1.insertCell(1)
+    strip2.insertCell(1)
+  }
+}
+
+var resetBoardLength = function(){
+  var stripLength = strip1.querySelectorAll('td').length
+  for (var i = stripLength; i > 2; i--)
+  {
+    strip1.deleteCell(-1)
+    strip2.deleteCell(-1)
+  }
+}
+
 var findPlayer = function(strip) {
   // console.log("it works");
   return strip.querySelector(".active");
@@ -19,17 +36,18 @@ var gameEnd = function(strip, player_name){
   if (strip.lastElementChild.className === "active")
   {
     alert( "winner: "+ player_name);
-    resetGame()
+    movePlayerToBeginning()
+    resetBoardLength()
   }
 }
 
-var resetGame = function(){
+var movePlayerToBeginning = function(){
   var course1 = document.querySelectorAll('.active')[0]
   var course2 = document.querySelectorAll('.active')[1]
   course1.className = ""
   course2.className = ""
   document.querySelector("#player1_strip").querySelector('td').className = 'active'
-   document.querySelector("#player2_strip").querySelector('td').className = 'active'
+  document.querySelector("#player2_strip").querySelector('td').className = 'active'
 }
 
 var oneKeyTap = function(strip) {
@@ -38,7 +56,6 @@ var oneKeyTap = function(strip) {
 }
 
 document.onkeyup = function(e) {
-  console.log(e.keyCode)
   if (e.keyCode == 65)
   {
     oneKeyTap(strip1)
