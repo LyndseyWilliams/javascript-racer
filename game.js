@@ -1,33 +1,32 @@
-// var active=document.querySelector(".active")
-//   this.onclick=function(){
-//     (this).style.backgroundcolor="yellow"
 
-//   }
+window.onload = function(){
 
-// var el= document.querySelector('.active');
-//   el.onclick (function(){
-//   this.innerHTML = "WHAT!!");
-
-// }
-
-// window.addEventListener('load', function(){
-//   document.querySelector(".active").onclick=function()
-//   {
-//       this.classList.remove('active');
-//       document.getElementsByClassName(this).NextElementSibling.add('active');
-//   };
-// })
-
-window.addEventListener('load', function(){
-  var rows= document.getElementsByTagName('td');
-  rows.classList.remove('active');
-  for (i=0;i <= rows.length;i++){
-    rows[i].onclick = function(){
-      this.className += 'active'
-      // this.className.setAttribute("backgroundcolor", "white")
-      // this.classList.add('inactive');
-
-    }
+var movePlayer1 = function(player1){
+  player1.classList.remove('active');
+  if (player1.nextElementSibling != null)
+   player1.nextElementSibling.classList.add('active');
+  else
+  alert("player1 wins!!!!!");
   }
-})
+
+  var movePlayer2 = function(player2){
+  player2.classList.remove('active');
+  if (player2.nextElementSibling != null)
+   player2.nextElementSibling.classList.add('active');
+  else
+  alert("player2 wins!!!!!");
+  }
+
+document.getElementById('player1_strip').onclick = function(event){
+  var player1 = document.querySelector('#player1_strip > td.active')
+  movePlayer1(player1)
+}
+
+document.getElementById('player2_strip').onclick = function(event){
+  var player2 = document.querySelector('#player2_strip > td.active')
+  movePlayer2(player2)
+ }
+}
+
+
 

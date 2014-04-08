@@ -1,0 +1,11 @@
+
+.racer_table td {
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border-style: solid;
+}
+
+.racer_table td.active {
+  background-color: pink;
+}
