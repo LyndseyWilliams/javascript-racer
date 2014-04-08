@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
-document.addEventListener('keyup', racer, false)
+var lengthOfTrack = 40
+var numPlayers = 2
 
+document.addEventListener('keyup', racer, false)
+generate(numPlayers,lengthOfTrack)
 
 })
 
@@ -35,3 +38,34 @@ var movePlayer = function(player){
       document.removeEventListener('keyup', racer)
     };
   }
+
+  var generate = function(numPlayers, lengthOfTrack){
+    p = 0
+    for(i = 0; i < numPlayers; i++){
+      playerTrack = document.createElement('tr')
+      player = "player" + (p+1)
+      playerTrack.setAttribute('id', player)
+      raceTrack = document.querySelector('.racer_table')
+      raceTrack.appendChild(playerTrack)
+      var c = 0
+      for(j=0; j < lengthOfTrack; c++){
+        var col = document.createElement('td')
+        document.querySelector('#' + player).appendChild(col);
+        if (j === 0) {
+          col.setAttribute('class', 'active')
+        };
+        j++
+      }
+      p++
+    }
+  }
+
+
+
+
+
+
+
+
+
+
