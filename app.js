@@ -1,9 +1,14 @@
 document.onreadystatechange = function(){
+  startGame(10, 4)
+}
+
+var startGame = function(trackLength, numberOfPlayers){
   if (document.readyState == "complete"){
     setupLanes(10, 4);
     document.addEventListener('keyup', handleKeyup, false)
   }
 }
+
 
 //---------------HELPER METHODS---------------------------------------------
 
@@ -30,13 +35,17 @@ var handleKeyup = function(keyUpEvent){
 }
 
 var updatePlayerPosition = function(player){
-  playerPosition = currentPosition(player)
-  playerRow = allTdsForGivenPlayer(player)
+  playerPosition = currentPosition(player);
+  playerRow = allTdsForGivenPlayer(player);
   playerRow[playerPosition].className = '';
-  if (playerPosition == playerRow.length){
-    
+  if (playerPosition == (playerRow.length - 1)){
+    declareWinner(player)
   }
   playerRow[playerPosition + 1].className = 'active';
+}
+
+var declareWinner = function(player){
+
 }
 
 //---------------SETUP HELPER---------------
