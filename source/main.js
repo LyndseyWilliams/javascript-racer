@@ -1,34 +1,41 @@
 var setupLanes = function(number_of_cells_in_lane){
   for (index=0; index<number_of_cells_in_lane; index++){
-   document.getElementById("player1_row").appendChild(document.createElement('TD'));
-   document.getElementById("player2_row").appendChild(document.createElement('TD'));
+   document.getElementById("player1").appendChild(document.createElement('TD'));
+   document.getElementById("player2").appendChild(document.createElement('TD'));
   }
 }
- var update_player_position = function(player, position){
-  document.querySelector("#" + player).querySelectorAll("td")[position].className = 'active';
+
+ var movePlayerPosition = function(player, position){
+    var playerRow = document.querySelector("#" + player).querySelectorAll("td")
+    if (position > 0){
+      playerRow[position - 1].className = ''
+    }
+    playerRow[position].className = 'active'
+    // determineWinner(params)
+  // document.querySelector("#" + player).querySelectorAll("td")[position].className = 'active';
  }
 
-current_position = 0
+ // var determineWinner = function(params){
+
+ // }
+
+ var listenKeystroke = function(event) {
+  if (event.keyCode == 80)
+    movePlayerPosition('player1', player1Position = player1Position + 1)
+  else if (event.keyCode == 81)
+    movePlayerPosition('player2', player2Position = player2Position + 1)
+ }
+
+player1Position = 0
+player2Position = 0
 
 document.onreadystatechange = function() {
+    document.addEventListener("keyup", listenKeystroke, false);
+
   if (document.readyState == 'complete'){
     setupLanes(20);
-    update_player_position('player1_row', current_position);
-    update_player_position('player2_row', current_position);
+    movePlayerPosition('player1', player1Position);
+    movePlayerPosition('player2', player2Position);
   }
+
 }
-
-
-
-
-// TODO
-// event listener to hear a key stroke
-// Move the player on each key stroke
-//   * Find the td which is active
-//   * Look up the method to move to the next element in the document
-
-
-
-
-
-
