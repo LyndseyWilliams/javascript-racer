@@ -5,7 +5,7 @@
 
 .racer_table{
   margin: auto;
-  margin-top: 30%;
+  margin-top: 50px;
   vertical-align: middle;
 
   border-collapse: separate;
@@ -21,4 +21,10 @@
 
 .racer_table td.active {
   background-color: black;
+}
+
+.winner h2 {
+  text-align: center;
+  margin: auto;
+  margin-top: 2px;
 }

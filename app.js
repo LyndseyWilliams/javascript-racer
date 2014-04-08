@@ -4,7 +4,7 @@ document.onreadystatechange = function(){
 
 var startGame = function(trackLength, numberOfPlayers){
   if (document.readyState == "complete"){
-    setupLanes(10, 4);
+    setupLanes(trackLength, numberOfPlayers);
     document.addEventListener('keyup', handleKeyup, false)
   }
 }
@@ -45,7 +45,8 @@ var updatePlayerPosition = function(player){
 }
 
 var declareWinner = function(player){
-
+  document.removeEventListener('keyup', handleKeyup, false)
+  document.querySelector("h2").innerHTML = player + " is the winner!"
 }
 
 //---------------SETUP HELPER---------------
