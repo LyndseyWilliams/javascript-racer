@@ -27,3 +27,8 @@
 .racer_table td.activeMtouched {
   background-color: green;
 }
+
+.racer_table td.endA {
+  display: none;
+  background-color: none;
+}

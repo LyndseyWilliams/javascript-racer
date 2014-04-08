@@ -4,7 +4,6 @@ document.onreadystatechange = function() {
   document.addEventListener('keyup', pressM, false)
   document.addEventListener('keyup', pressQ, false)
 
-
 }
 //functions for playerA to turn off current
   function turnCurrentOff(){
@@ -20,7 +19,7 @@ document.onreadystatechange = function() {
 
     }
   }
-// functions for playerB to turn off current
+// functions for playerB player1to turn off current
   function turnMCurrentOff(){
   if (document.querySelector('#player2_strip .activeMgo')) {
     document.querySelector('#player2_strip .activeMgo').className = 'activeMtouched';
@@ -39,11 +38,13 @@ document.onreadystatechange = function() {
   function changeQ(){
     turnCurrentOff()
     turnFirstOn()
+    findWinner()
   }
 //player B master manipulating function
   function changeM(){
     turnMCurrentOff()
     turnMFirstOn()
+    findWinner()
   }
 
 
@@ -60,9 +61,25 @@ document.onreadystatechange = function() {
     }
   }
 
+function findWinner(){
+  var lastA = document.querySelector('#player1_strip');
+  var lastM = document.querySelector('#player2_strip');
+  var lastChildA = lastA.lastChild;
+  var lastChildM = lastM.lastChild;
+  console.log(lastChildM)
+
+  if (lastChildM.previousSibling.className === 'activeMtouched') {
+    alert('player 2 wins')
+  }
+  if (lastChildA.previousSibling.className === 'activeAtouched') {
+      alert('player 1 wins')
+  }
+}
 
 
+function reset() {
 
+}
 
 
 
