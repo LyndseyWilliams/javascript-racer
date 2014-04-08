@@ -33,6 +33,7 @@ var get_index_of_player = function(player_row) {
   var active_cell = player_row.querySelector('.active')
 
   return array_of_td.indexOf(active_cell)
+
 }
 
 // Moves selected player incrementally one player up
@@ -47,10 +48,25 @@ var move_player = function (player) {
 
   update_player_position(player,current_index + 1 )
 
+  var current_index = get_index_of_player(player_row);
+
+  if (current_index == 11)
+   {console.log(player + " WINS!")}
+
 }
+
+var select_player = function(event) {
+  if (event.keyCode == 80)
+    {move_player("player1")}
+  else if (event.keyCode == 81)
+    {move_player("player2")}
+  else
+    {console.log("You pressed the wrong key")}
+}
+
 
 document.onreadystatechange = function() {
-
-document.addEventListener('keyup', move_player())
-
+  document.addEventListener('keyup', select_player, false);
 }
+
+// if (event.keyup === 81)
