@@ -17,11 +17,26 @@
 
 
 
+var lengthOfTrack = 3;
 
 var game = {
   state: "ongoing"
 }
 
+
+for (var i= 1; i < lengthOfTrack; i++) {
+  row = document.querySelector("#player1_strip");
+  var newSpace = document.createElement("td")
+  newSpace.className = "inactive";
+  newSpace = row.insertCell(i);
+};
+
+for (var i= 1; i < lengthOfTrack; i++) {
+  row = document.querySelector("#player2_strip");
+  var newSpace = document.createElement("td")
+  newSpace.className = "inactive";
+  newSpace = row.insertCell(i);
+};
 
 //Move player 1 /corresponds to p key (code 80)
 function move1() {
@@ -64,7 +79,8 @@ var restart = function(){
 // };
 
 // Lets ask why this works, but just an add an event listener does not
-document.onreadystatechange = function(){
+//document.onreadystatechange throws weird errors when you change the html
+window.onload = function(){
 document.addEventListener('keyup', play_game);
 
 }
@@ -85,4 +101,3 @@ document.addEventListener('keyup', play_game);
 
 };
 
-//document.querySelector("#restart").addEventListener('click', location.reload());
