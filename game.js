@@ -1,6 +1,8 @@
 
 window.onload = function(){
 
+function Game(player_1_row, player_2_row) {
+
 var movePlayer1 = function(player1){
   player1.classList.remove('active');
   if (player1.nextElementSibling != null){
@@ -43,10 +45,12 @@ document.getElementById('click').onclick = function(event)
 
 // document.getElementById('player_click').onclick = function(event)
 // {
-//   var table = document.getElementsByClassName("racer_table");
-//   row3= player2_strip
-//   var row3 = table.insertRow(2);
-// }
+//   var table1 = document.querySelector(".racer_table");
+//   row1 = player1_strip
+//   table1.insertRow(-1);
+//   var cell3 = row1.insertCell(-1);
 
+// }
+}
 }
 
