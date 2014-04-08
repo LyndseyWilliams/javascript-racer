@@ -16,28 +16,55 @@
 // var active_child_space
 
 
-
-var lengthOfTrack = 3;
-
 var game = {
   state: "ongoing"
 }
 
+// Creates the first player track
+var create_player1 = function(){
+row = document.querySelector("#player1_strip");
+  var newPlayer = document.createElement("td");
+   newPlayer = row.insertCell(0);
+   newPlayer.className = "active";
+}
 
+// Creates the second player track
+var create_player2 = function(){
+row = document.querySelector("#player2_strip");
+  var newPlayer = document.createElement("td");
+   newPlayer = row.insertCell(0);
+   newPlayer.className = "active";
+ }
+
+var extend_player1_track = function(){
 for (var i= 1; i < lengthOfTrack; i++) {
   row = document.querySelector("#player1_strip");
   var newSpace = document.createElement("td")
   console.log(newSpace)
   newSpace = row.insertCell(i); // note insert cell will not carry class
   newSpace.className = "inactive";
-};
+   };
+}
 
+var extend_player2_track = function(){
 for (var i= 1; i < lengthOfTrack; i++) {
   row = document.querySelector("#player2_strip");
   var newSpace = document.createElement("td")
   newSpace = row.insertCell(i); // note insert cell will not carry class
    newSpace.className = "inactive";
-};
+  };
+}
+
+var setUpBoard = function(track_length){
+  lengthOfTrack = track_length
+  create_player1()
+  create_player2()
+  extend_player1_track()
+  extend_player2_track()
+}
+
+
+
 
 //Move player 1 /corresponds to p key (code 80)
 function move1() {
@@ -102,3 +129,10 @@ document.addEventListener('keyup', play_game);
 
 };
 
+setUpBoard(10);
+
+// describe("A suite", function() {
+//   it("has at least two columns", function() {
+//     expect(true).toBe(true);
+//   });
+// });
