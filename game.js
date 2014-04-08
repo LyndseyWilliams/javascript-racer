@@ -11,7 +11,6 @@ var movePlayer1 = function(player1){
   }
 }
 
-
   var movePlayer2 = function(player2){
   player2.classList.remove('active');
   if (player2.nextElementSibling != null) {
@@ -22,7 +21,6 @@ var movePlayer1 = function(player1){
   }
 }
 
-
 document.getElementById('player1_strip').onclick = function(event){
   var player1 = document.querySelector('#player1_strip > td.active')
   movePlayer1(player1)
@@ -32,6 +30,22 @@ document.getElementById('player2_strip').onclick = function(event){
   var player2 = document.querySelector('#player2_strip > td.active')
   movePlayer2(player2)
  }
+
+
+document.getElementById('click').onclick = function(event)
+{
+  var table = document.getElementsByClassName("racer_table");
+  row1 = player1_strip
+  row2 = player2_strip
+  var cell1 = row1.insertCell(-1);
+  var cell2 = row2.insertCell(-1);
+}
+
+// document.getElementById('player_click').onclick = function(event)
+// {
+//   var table1 = document.getElementsByClassName("racer_table");
+
+// }
 
 }
 
