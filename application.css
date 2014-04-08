@@ -17,3 +17,9 @@ body {
 .active {
   text-align:center;
 }
+
+#winner {
+  text-align:center;
+  color:blue;
+  font-weight:bold;
+}
