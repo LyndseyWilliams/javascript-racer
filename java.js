@@ -3,6 +3,9 @@ document.onreadystatechange = function() {
 //set up
   document.addEventListener('keyup', pressM, false)
   document.addEventListener('keyup', pressQ, false)
+  var resetButton = document.getElementById('reset');
+  resetButton.addEventListener('click', reloadPage)
+
 
 }
 //functions for playerA to turn off current
@@ -66,18 +69,23 @@ function findWinner(){
   var lastM = document.querySelector('#player2_strip');
   var lastChildA = lastA.lastChild;
   var lastChildM = lastM.lastChild;
-  console.log(lastChildM)
 
-  if (lastChildM.previousSibling.className === 'activeMtouched') {
-    alert('player 2 wins')
-  }
   if (lastChildA.previousSibling.className === 'activeAtouched') {
-      alert('player 1 wins')
+      alert('player 1 wins');
+      document.removeEventListener('keyup', pressM, false);
+      document.removeEventListener('keyup', pressQ, false);
+  }
+  if (lastChildM.previousSibling.className === 'activeMtouched') {
+    alert('player 2 wins');
+    document.removeEventListener('keyup', pressQ, false);
+    document.removeEventListener('keyup', pressM, false);
   }
 }
 
 
-function reset() {
+
+function reloadPage() {
+  window.location.reload();
 
 }
 
