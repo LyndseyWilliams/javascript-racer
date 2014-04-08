@@ -1,15 +1,30 @@
 window.onload = function()
 {
+
+        body=document.getElementsByTagName('body')[0];
+        tbl=document.createElement('table');
+        tbl.className="racer_table"
+        body.appendChild(tbl)
+        for (var i = 0; i < 2; i++) // creating rows
+        {
+            console.log(i);
+            tr = document.createElement("tr");
+            tr.id="player"+(i+1)+"_strip"
+            tbl.appendChild(tr);
+            for (var j=0; j < 42; j++) // creating td cells inside the rows
+            {
+                var td = document.createElement("td");
+                tr.appendChild(td);
+            }
+        };
+        body.appendChild(tbl)
+
         p1 = document.querySelectorAll('#player1_strip > td');
         p2 = document.querySelectorAll('#player2_strip > td');
         position1 = 0;
         position2 = 0;
         length = p1.length;
 
-        // function showKeyCode(k){
-        //         alert( "keycode: " + e.keycode + "\n");
-        // }
-        // var keypressed = event.
         var keyRespond = function(event)
         {
             var key_press = String.fromCharCode(event.keyCode);
@@ -20,10 +35,6 @@ window.onload = function()
 
         document.addEventListener('keyup', keyRespond, false)
 
-        // document.onkeyup = function(event) {
-        //     var key_press = String.fromCharCode(event.keyCode);
-        // move_player(key_press)
-        // }
 
         wipe_race_track = function(track)
         {
@@ -42,10 +53,12 @@ window.onload = function()
         {
             if (key_press == "Q")
             {
+                console.log("q")
                 update_player_position(1)
             }
             else if (key_press == "P")
             {
+                console.log("p")
                 update_player_position(2)
             }
         }
